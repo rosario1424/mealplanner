@@ -1,0 +1,25 @@
+{
+  "name": "meal-palnner",
+  "version": "1.0.0",
+  "description": "The Meal Planner aplications is a simple app where users can plan their daily meals and track basic nutritions information ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rosario1424/mealplanner.git"
+  },
+  "keywords": [
+    "nutrition",
+    "meals",
+    "planner",
+    "diet"
+  ],
+  "author": "Divia Rozario",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rosario1424/mealplanner/issues"
+  },
+  "homepage": "https://github.com/rosario1424/mealplanner#readme"
+}

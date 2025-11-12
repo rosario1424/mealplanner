@@ -1,11 +1,10 @@
 // import express module
 const express = require('express');
+const mealplanRouter = require('./routes/mealplanRoutes');
 
 // create an express applications
 const app = express();
 
-app.get('/mealplans', (req, res) => {
-    res.json({ message: 'Get all Meal Plans' });
-})
+app.use('/', mealplanRouter);
 
 module.exports = app;

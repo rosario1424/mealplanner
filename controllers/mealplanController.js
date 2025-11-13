@@ -19,7 +19,24 @@ const getAllMealPlans = async (req, res) => {
     }
 }
 
+const getMealPlanById = async (req, res) => {
+    try {
+      const id = req.params.id;
+      const mealplan = await Mealplan.findById(id).select('-__v');
+      
+      if (!mealplan) {
+            return res.status(404).json({ message: 'Meal Plan not found' });
+      }
+
+      res.status (200).json({ mealplan });
+
+    } catch (error) {
+        res.status(500).json({ message: 'Fetching meal plan failed...', error: error.message  });
+    }
+}
+
 module.exports = {
     getAllMealPlans,
-    createMealPlan
+    createMealPlan,
+    getMealPlanById
 }

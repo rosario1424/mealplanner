@@ -35,8 +35,49 @@ const getMealPlanById = async (req, res) => {
     }
 }
 
+const updateMealPlan = async (req, res) => {
+    try {
+        // get the id from the url params
+        const id = req.params.id;
+
+        // get the data to update from the request body
+        const updateData = req.body;
+
+        // find the meal plan by id and update it with the new data
+        const updatedMealPlan = await Mealplan.findByIdAndUpdate(id, updateData, { new: true });
+
+        if (!updatedMealPlan) {
+            return res.status(404).json({ message: 'Meal plan not found' });
+        }
+
+        res.status(200).json({ message: 'Meal plan Updated', mealplan: updatedMealPlan });
+
+    } catch (error) {
+        res.status(500).json({ message: 'Updating meal plan failed...', error: error.message  });
+    }
+}
+
+const deleteMealPlan = async (req, res) => {
+    try {
+        // get the id from the url params
+        const id = req.params.id;
+
+        const mealPlanDeleted = await Mealplan.findByIdAndDelete(id);
+
+        if (!mealPlanDeleted) {
+            return res.status(404).json({ message: 'Meal plan not found' });
+        }
+
+        res.status(200).json({ message: 'Meal plan Deleted', mealplan: mealPlanDeleted });
+    } catch (error) {
+         res.status(200).json ({ message: 'Deleting meal plan failed...', error: error.message });
+    }
+}
+
 module.exports = {
     getAllMealPlans,
     createMealPlan,
-    getMealPlanById
+    getMealPlanById,
+    updateMealPlan,
+    deleteMealPlan
 }

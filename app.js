@@ -5,6 +5,8 @@ const mealplanRouter = require('./routes/mealplanRoutes');
 // create an express applications
 const app = express();
 
-app.use('/', mealplanRouter);
+app.use(express.json());
+
+app.use('/mealplans', mealplanRouter);
 
 module.exports = app;

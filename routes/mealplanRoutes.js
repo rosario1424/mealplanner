@@ -1,8 +1,9 @@
 const express = require('express');
-const { getAllMealPlans } = require('../controllers/mealplanController');
+const { getAllMealPlans, createMealPlan } = require('../controllers/mealplanController');
 const mealplanRouter = express.Router();
 
-mealplanRouter.get('/mealplans', getAllMealPlans )
+mealplanRouter.post('/', createMealPlan);
+mealplanRouter.get('/', getAllMealPlans );
 
 
 module.exports = mealplanRouter;

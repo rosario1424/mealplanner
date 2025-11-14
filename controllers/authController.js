@@ -63,7 +63,7 @@ const loginUser = async (req, res) => {
 
         // set the token in the response header for httpOnly cookie
         res.cookie('token', token, { httpOnly: true });
-        
+
         // return sucess respone
         res.status(200).json({ message: 'Login sucessfull' });
 
@@ -71,7 +71,33 @@ const loginUser = async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 }
+
+const Me = async (req,res) => {
+    try {
+       const userId = req.userId;
+       const user = await User.findById(userId).select
+       ('-password');
+       if (!user) {
+        return res.status(404).json({ message: 'User not found or not logged in' });
+       }
+       res.status(200).json({ user });
+    } catch {
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
+const logout = async (req, res) => {
+    try {
+        res.clearCookie('token');
+        res.status(200).json({ message: 'Logout successfull' });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    Me,
+    logout
 }

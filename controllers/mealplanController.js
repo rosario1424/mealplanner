@@ -1,9 +1,21 @@
 const Mealplan = require('../models/Mealplan');
+const sendEmail = require('../utils/Email');
+const User = require('../models/User');
 
 const createMealPlan = async (req,res) => {
     try{
         const newMealPlan = new Mealplan(req.body);
         const savedMealPlan = await newMealPlan.save();
+
+        const user = await User.findById(req.userId);
+
+        //send an email notification to admin
+        await sendEmail(
+            user.email,
+            'New Meal Plan Created',
+            `A new meal plan titled "${savedMealPlan.dietType}" has been created.`
+        )
+
         res.status(201).json({ message: 'Meal Plan Created', mealplan: savedMealPlan });
     } catch (error) {
         res.status(500).json({ message: 'Creating meal plan failed...', error: error.message });

@@ -9,7 +9,7 @@ mongoose
         console.log('Connected to MongoDB');
 
         // listening for incoming request ( start the server )
-app.listen (3001, 'localhost', () => {
+app.listen (3001, () => {
     console.log( `Server is running http://localhost:3001`);
 });
     })

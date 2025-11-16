@@ -12,7 +12,7 @@ const app = express();
 
 // enable CORS for all routes
 app.use(cors({
-    origin: 'localhost:5173',
+    origin: 'http://localhost:5173',
 }));
 
 //middleware to parse JSON request bodies

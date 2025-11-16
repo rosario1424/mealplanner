@@ -1,2 +1,3 @@
 2025-11-15T09:28:43.534Z - GET /mealplans/ - Body: undefined - Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTE1YjVkNWE4MTc5ZTkxOTZjMjEyYmMiLCJpYXQiOjE3NjMxNzM4MTQsImV4cCI6MTc2MzE3NzQxNH0.fg9Prj9F8DJDKy61Cx-QKkfsmKb3KMwmcowisxwA0aE"}
 2025-11-15T09:30:05.876Z - GET /mealplans/ - Body: undefined - Cookies: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTE1YjVkNWE4MTc5ZTkxOTZjMjEyYmMiLCJpYXQiOjE3NjMxNzM4MTQsImV4cCI6MTc2MzE3NzQxNH0.fg9Prj9F8DJDKy61Cx-QKkfsmKb3KMwmcowisxwA0aE"}
+2025-11-15T12:26:52.895Z - DELETE /mealplans/69149e71b306137fa34cb841 - Body: undefined - Cookies: {}

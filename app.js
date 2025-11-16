@@ -5,9 +5,15 @@ const authRouter = require('./routes/authRoutes');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const logger = require('./utils/logger');
+const cors = require('cors');
 
 // create an express applications
 const app = express();
+
+// enable CORS for all routes
+app.use(cors({
+    origin: 'localhost:5173',
+}));
 
 //middleware to parse JSON request bodies
 app.use(express.json());

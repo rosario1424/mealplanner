@@ -62,7 +62,12 @@ const loginUser = async (req, res) => {
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         // set the token in the response header for httpOnly cookie
-        res.cookie('token', token, { httpOnly: true });
+        res.cookie('token', token, { 
+            httpOnly: true,
+            secure: true, // Required for cross-origin cookies
+            sameSite: 'none', // Required for cross-origin cookies
+            maxAge: 3600000 // 1 hour
+        });
 
         // return sucess respone
         res.status(200).json({ message: 'Login sucessfull' });
@@ -88,7 +93,10 @@ const Me = async (req,res) => {
 
 const logout = async (req, res) => {
     try {
-        res.clearCookie('token');
+        res.clearCookie('token', {
+            secure: true,
+            sameSite: 'none'
+        });
         res.status(200).json({ message: 'Logout successfull' });
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
